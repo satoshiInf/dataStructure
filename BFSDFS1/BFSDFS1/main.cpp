@@ -15,6 +15,7 @@
 
 void bfs(int start, std::vector<std::vector<int>> &graph)
 {
+    //graph, TFtable, queue
     std::vector<bool> visited(graph.size(), false);
     std::queue<int> queue;
     //スタートポイントの設定
@@ -23,6 +24,7 @@ void bfs(int start, std::vector<std::vector<int>> &graph)
     
     while(!queue.empty() )
     {
+        //graph -> node -> queue
         int node = queue.front();
         queue.pop();
         std::cout << node <<" ";
@@ -46,10 +48,11 @@ void dfs(int start, std::vector<std::vector<int>> &graph)
     stack.push(start);
     visited[start] = true;
     
+    //　!stack.empty()なので、減らさないと無限ループ。stackを減らす作業が入る
     while(!stack.empty())
     {
         int node = stack.top();
-        stack.pop();
+        stack.pop();//ここ
         std::cout<< node <<" ";
         
         for(int next: graph[node])
